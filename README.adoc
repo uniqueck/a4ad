@@ -1,0 +1,22 @@
+== A4aD - Ask for a Deployment
+
+=== Idee
+
+A4aD soll ein kleines Projekt sein um Technologien zu verproben.
+A4aD soll eine Anwendung werden, womit Deployments von Java Anwendungen auf SSH Containern durchgeführt werden können.
+Hierfür soll der Anwender einzelne Shell Befehle zu einem Deployment Job hinterlegen können, welche in einer bestimmten Reihenfolge ausgeführt werden sollen. Der Deployment Prozess soll mittels Flowable als ein Buisness Process ausgeführt werden. Der Fortschritt soll visualisiert werden, so dass der Anwender über eine UI den Zustand des Deployments nachvollziehen kann.
+Jedes Deployment soll protokolliesiert werden und über ein Rechtkonzept abgesichert werden, so dass nur bestimmte Rollen ein Deployment in eine gewisse Umgebung beauftragen. Über eine REST API soll eine Integration für CI Server geschaffen werden und gleichzeitig der Anreiz für alternative UI Implementierungen geschaffen werden. Eine eigene UI wird auf Basis des Frameworks Thymeleaf implementiert.
+ 
+
+=== genutzte Technologien
+
+* Spring Boot
+* Cucumber
+* Thymelead
+* TestContainers
+* JUnit 5
+* Asciidoc
+* Liquibase
+* Selenium
+* Flowable
+
