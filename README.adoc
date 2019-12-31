@@ -1,10 +1,15 @@
 == A4aD - Ask for a Deployment
-image:https://circleci.com/gh/uniqueck/a4ad/tree/master.svg["CircleCI", link="https://circleci.com/gh/uniqueck/a4ad/tree/master"]
+image:https://circleci.com/gh/uniqueck/a4ad/tree/master.svg?style=shield["CircleCI", link="https://circleci.com/gh/uniqueck/a4ad/tree/master"]
+image:https://sonarcloud.io/api/project_badges/measure?project=uniqueck_a4ad&metric=sqale_rating["Maintainability Rating", link="https://sonarcloud.io/component_measures?id=uniqueck_a4ad&metric=Maintainability"]
+image:https://sonarcloud.io/api/project_badges/measure?project=uniqueck_a4ad&metric=bugs["Bugs", link="https://sonarcloud.io/component_measures?id=uniqueck_a4ad&metric=bugs"]
+image:https://sonarcloud.io/api/project_badges/measure?project=uniqueck_a4ad&metric=code_smells["Code Smells", link="https://sonarcloud.io/component_measures?id=uniqueck_a4ad&metric=code_smells"]
+image:https://sonarcloud.io/api/project_badges/measure?project=uniqueck_a4ad&metric=coverage["Coverage", link="https://sonarcloud.io/component_measures?id=uniqueck_a4ad&metric=Coverage"]
+image:https://sonarcloud.io/api/project_badges/measure?project=uniqueck_a4ad&metric=alert_status["Quality Gate", link="https://sonarcloud.io/dashboard?id=uniqueck_a4ad"]
 
 === Hintergrund
 
 A4aD soll ein Beispielrepository sein, um Technologien zu verproben und eine mögliche Umsetzung der Hexagonale Architektur.
-Die Umsetzung der Hexagonalen Architektur basiert auf dem Buch https://leanpub.com/get-your-hands-dirty-on-clean-architecture[Get Yor Hands Dirty On Clean Architecture] von https://github.com/thombergs[Tom Hombergs].
+Die Umsetzung der Hexagonalen Architektur basiert auf dem Buch https://leanpub.com/get-your-hands-dirty-on-clean-architecture[Get Your Hands Dirty On Clean Architecture] von https://github.com/thombergs[Tom Hombergs].
 
 === Idee
 
