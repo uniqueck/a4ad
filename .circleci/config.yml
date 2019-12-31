@@ -20,7 +20,7 @@ jobs:
           path: ~/test-results/junit
       - run:
           name: Analyze on SonarCloud
-          command: mvn -B verify sonar:sonar
+          command: mvn -B install sonar:sonar
   build-docs:
     docker:
       - image: circleci/openjdk:11-jdk
