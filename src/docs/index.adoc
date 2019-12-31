@@ -5,12 +5,11 @@
 // configure DE settings for asciidoc
 include::arc42/DE/config.adoc[]
 
-= image:arc42-logo.png[arc42] AsciiDoctorJ Decisiontable Extension
+= image:arc42-logo.png[arc42] A4AD - Ask For A Deployment
 Constantin Krüger <mail(@)constantin-krueger.com>
 {doc-revision-version}, {doc-revision-date}
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Inhaltsverzeichnis
-:stylesheet: github
 
 //additional style for arc42 help callouts
 ifdef::basebackend-html[]
