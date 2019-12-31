@@ -24,6 +24,7 @@
 		<sonar.organization>uniqueck-github</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
 	</properties>
 
@@ -113,15 +114,20 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.4</version>
+				<version>0.8.5</version>
 				<executions>
 					<execution>
+						<id>prepare-agent</id>
 						<goals><goal>prepare-agent</goal></goals>
+						<phase>process-test-classes</phase>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals><goal>report</goal></goals>
+						<phase>test</phase>
 					</execution>
 				</executions>
 			</plugin>
-
-
 		</plugins>
 	</build>
 
