@@ -5,20 +5,6 @@
 
 === Fachlicher Kontext
 
-[plantuml, fachlicher-context, svg]
-----
-@startuml
-
-component "asciidoctorj-decisiontable-extension" as ade
-component "asciidoctorj" <<external>>
-component "Lohrfink\nEntscheidungstabelle" <<external>> as lfet
-
-ade -> asciidoctorj : runtime
-ade -down-> lfet : source format
-
-@enduml
-----
-
 **<Diagramm und/oder Tabelle>**
 
 **<optional: Erläuterung der externen fachlichen Schnittstellen>**

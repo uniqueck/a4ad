@@ -23,7 +23,7 @@
 		<sonar.projectKey>uniqueck_a4ad</sonar.projectKey>
 		<sonar.organization>uniqueck-github</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.moduleKey>${artifactId}</sonar.moduleKey>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 
 	</properties>
 
@@ -111,6 +111,59 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
+
+	<profiles>
+		<profile>
+			<id>arc42</id>
+			<properties>
+				<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+			</properties>
+			<build>
+				<defaultGoal>generate-resources</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctor-maven-plugin</artifactId>
+						<version>2.0.0-RC.1</version>
+						<configuration>
+							<sourceDirectory>${project.basedir}/src/docs</sourceDirectory>
+							<sourceDocumentName>index.adoc</sourceDocumentName>
+							<backend>html5</backend>
+							<attributes>
+								<toc>left</toc>
+								<sectanchors />
+								<sectlinks />
+								<doc-revision-version>V${project.version}</doc-revision-version>
+								<doc-revision-date>${maven.build.timestamp}</doc-revision-date>
+								<version-label/>
+							</attributes>
+							<requires>
+								<require>asciidoctor-diagram</require>
+							</requires>
+						</configuration>
+						<executions>
+							<execution>
+								<id>default</id>
+								<phase>generate-resources</phase>
+								<goals><goal>process-asciidoc</goal></goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.asciidoctor</groupId>
+								<artifactId>asciidoctorj-diagram</artifactId>
+								<version>1.5.18</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+
+			</build>
+		</profile>
+
+	</profiles>
 
 
 </project>
