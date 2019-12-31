@@ -19,11 +19,6 @@ jobs:
       - store_artifacts:
           path: ~/test-results/junit
       - run:
-          name: PITTest
-          command: mvn -B org.pitest:pitest-maven:mutationCoverage
-      - store_artifacts:
-          path: ~/target/pit-reports/
-      - run:
           name: Analyze on SonarCloud
           command: mvn -B verify sonar:sonar
   build-docs:

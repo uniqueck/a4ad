@@ -22,12 +22,6 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>application</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>api-out</artifactId>
             <version>${project.version}</version>
         </dependency>
