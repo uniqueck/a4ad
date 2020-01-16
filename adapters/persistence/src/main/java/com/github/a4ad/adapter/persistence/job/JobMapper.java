@@ -8,8 +8,7 @@ class JobMapper {
 
     public LoadJobPort.JobPortModel mapToPortModel(JobJpaEntity from) {
 
-        LoadJobPort.JobPortModel to = new JobPortTransferModel(new JobPortTransferModel.JobIdPortTransferModel(from.getId()), from.getName());
-        return to;
+        return new JobPortTransferModel(new JobPortTransferModel.JobIdPortTransferModel(from.getId()), from.getName());
 
     }
 

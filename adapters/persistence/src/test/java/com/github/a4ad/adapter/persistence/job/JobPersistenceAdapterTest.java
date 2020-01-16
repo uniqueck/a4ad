@@ -2,6 +2,7 @@ package com.github.a4ad.adapter.persistence.job;
 
 import com.github.a4ad.port.out.LoadJobPort;
 import lombok.Value;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
