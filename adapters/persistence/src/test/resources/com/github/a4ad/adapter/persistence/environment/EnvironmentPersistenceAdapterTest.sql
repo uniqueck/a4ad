@@ -1,0 +1,1 @@
+insert into ENVIRONMENT (id) values (1);

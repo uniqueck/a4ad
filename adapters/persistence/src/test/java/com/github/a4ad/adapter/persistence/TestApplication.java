@@ -1,4 +1,4 @@
-package com.github.a4ad.adapter.persistence.job;
+package com.github.a4ad.adapter.persistence;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
