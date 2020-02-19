@@ -29,3 +29,6 @@ Jedes Deployment soll protokollisiert werden und über ein Rechtkonzept abgesich
 * Selenium
 * Flowable
 
+=== Nützliche Links
+
+* https://github.com/callicoder/spring-boot-file-upload-download-rest-api-example[File Upload via REST API]

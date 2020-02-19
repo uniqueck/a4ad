@@ -1,42 +1,33 @@
 package com.github.a4ad.adapter.bpmn;
 
-import org.flowable.engine.ProcessEngine;
-import org.flowable.engine.ProcessEngineConfiguration;
+import org.flowable.engine.RepositoryService;
+import org.flowable.engine.TaskService;
+import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.test.Deployment;
-import org.flowable.spring.SpringProcessEngineConfiguration;
-import org.flowable.spring.impl.test.FlowableSpringExtension;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.autoconfigure.data.jdbc.AutoConfigureDataJdbc;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(FlowableSpringExtension.class)
+import java.util.List;
+
 @ExtendWith(SpringExtension.class)
+@SpringBootTest
 class BpmnAdapterTest {
 
+    @Autowired
+    TaskService taskService;
 
-    @AutoConfigureDataJdbc
-    @Configuration(proxyBeanMethods = false)
-    public static class TestConf {
-
-        @Bean
-        public ProcessEngineConfiguration processEngineConfiguration() {
-            SpringProcessEngineConfiguration springProcessEngineConfiguration = new SpringProcessEngineConfiguration();
-            return springProcessEngineConfiguration;
-        }
-
-        @Bean
-        public ProcessEngine processEngine(ProcessEngineConfiguration cfg) {
-            return cfg.buildProcessEngine();
-        }
-
-    }
+    @Autowired
+    RepositoryService repositoryService;
 
     @Test
-    @Deployment(resources = {"processes/example-bpmn.xml"})
     void test() {
+        List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery().orderByProcessDefinitionId().asc().list();
+        Assertions.assertNotNull(list);
+        Assertions.assertEquals(1, list.size());
 
     }
 

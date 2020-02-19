@@ -11,5 +11,38 @@
 
     <artifactId>domain</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.4.10</version>
+                <configuration>
+                    <timestampedReports>false</timestampedReports>
+                    <targetClasses>
+                        <targetClass>com.github.a4ad.domain.*</targetClass>
+                    </targetClasses>
+                    <maxSurviving>0</maxSurviving>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pit-junit</id>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                        <phase>test</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>0.12</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
