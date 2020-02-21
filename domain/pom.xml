@@ -11,18 +11,31 @@
 
     <artifactId>domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.4.10</version>
+                <version>1.4.11</version>
                 <configuration>
                     <timestampedReports>false</timestampedReports>
                     <targetClasses>
                         <targetClass>com.github.a4ad.domain.*</targetClass>
                     </targetClasses>
                     <maxSurviving>0</maxSurviving>
+                    <useSlf4j>true</useSlf4j>
+                    <excludedMethods>
+                        <excludedMethod>equals</excludedMethod>
+                        <excludedMethod>hashCode</excludedMethod>
+                        <excludedMethod>toString</excludedMethod>
+                    </excludedMethods>
                 </configuration>
                 <executions>
                     <execution>
