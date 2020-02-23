@@ -39,6 +39,7 @@
 		<module>ports/api-in</module>
 		<module>ports/api-out</module>
         <module>adapters/bpmn-flowable</module>
+        <module>adapters/ssh-jcabi</module>
     </modules>
 
 

@@ -12,5 +12,15 @@
 
     <artifactId>api-out</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+    </dependencies>
+
 
 </project>
