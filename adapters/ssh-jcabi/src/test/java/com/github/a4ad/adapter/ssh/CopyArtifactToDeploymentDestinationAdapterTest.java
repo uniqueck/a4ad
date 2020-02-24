@@ -13,7 +13,9 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,7 +41,7 @@ class CopyArtifactToDeploymentDestinationAdapterTest {
         assertTrue(execResult.getStdout().contains("File: " + command.getDestinationPath()));
         execResult = container.execInContainer("cat", command.getDestinationPath());
         assertEquals(0, execResult.getExitCode());
-        assertEquals("hallo", execResult.getStdout());
+        assertEquals("content", execResult.getStdout());
     }
 
     @NotNull
@@ -49,7 +51,12 @@ class CopyArtifactToDeploymentDestinationAdapterTest {
 
     @NotNull
     private CopyArtifactToDeploymentDestinationCommand createCommand(String user, String password, String pathToArtifactOnServer) {
-        return CopyArtifactToDeploymentDestinationCommand.of(Destination.of(container.getContainerIpAddress(), container.getMappedPort(22)), Authorization.byPassword(user, password), pathToArtifactOnServer);
+        return createCommand(user, password, container.getContainerIpAddress(), container.getMappedPort(22), pathToArtifactOnServer);
+    }
+
+    @NotNull
+    private CopyArtifactToDeploymentDestinationCommand createCommand(String user, String password, String ipAddress, int port, String pathToArtifactOnServer) {
+        return CopyArtifactToDeploymentDestinationCommand.of(Destination.of(ipAddress, port), Authorization.byPassword(user, password), pathToArtifactOnServer, new ByteArrayInputStream("content".getBytes(StandardCharsets.UTF_8)));
     }
 
     @NotNull
@@ -98,6 +105,14 @@ class CopyArtifactToDeploymentDestinationAdapterTest {
         container.execInContainer("touch", command.getDestinationPath());
         CopyArtifactToDeploymentDestinationPort.CopyArtifactToDeploymentDestinationException exception = assertThrows(CopyArtifactToDeploymentDestinationPort.CopyArtifactToDeploymentDestinationException.class, () -> new CopyArtifactToDeploymentDestinationAdapter().copyArtifact(command));
         assertThat(exception.getMessage()).isEqualTo("Existing file on '"+command.getDestinationPath()+"'").as("exception message should point to all relevant informations");
+    }
+
+    @DisplayName("wrong port specified, copy should throws exception")
+    @Test
+    void wrongPort() throws IOException, InterruptedException {
+        CopyArtifactToDeploymentDestinationCommand command = createCommand("root", "root", container.getContainerIpAddress(),9999,"/tmp/deployFile.txt");
+        CopyArtifactToDeploymentDestinationPort.CopyArtifactToDeploymentDestinationException exception = assertThrows(CopyArtifactToDeploymentDestinationPort.CopyArtifactToDeploymentDestinationException.class, () -> new CopyArtifactToDeploymentDestinationAdapter().copyArtifact(command));
+        assertThat(exception.getMessage()).isEqualTo("Connection to destination '"+command.getDestination().getHost()+":" + command.getDestination().getPort() +"' couldn't be established").as("exception message should point to all relevant informations");
     }
 
 

@@ -7,6 +7,7 @@ import lombok.Value;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.InputStream;
 
 public interface CopyArtifactToDeploymentDestinationPort {
 
@@ -24,14 +25,17 @@ public interface CopyArtifactToDeploymentDestinationPort {
         @NotNull
         String destinationPath;
 
-        public static CopyArtifactToDeploymentDestinationCommand of(Destination destination, Authorization authorization, String destinationPath) {
-            return new CopyArtifactToDeploymentDestinationCommand(destination, authorization, destinationPath);
+        @NotNull InputStream inputStream;
+
+        public static CopyArtifactToDeploymentDestinationCommand of(Destination destination, Authorization authorization, String destinationPath, InputStream inputStream) {
+            return new CopyArtifactToDeploymentDestinationCommand(destination, authorization, destinationPath, inputStream);
         }
 
-        private CopyArtifactToDeploymentDestinationCommand(Destination destination, Authorization authorization, String destinationPath) {
+        private CopyArtifactToDeploymentDestinationCommand(Destination destination, Authorization authorization, String destinationPath, InputStream inputStream) {
             this.destination = destination;
             this.authorization = authorization;
             this.destinationPath = destinationPath;
+            this.inputStream = inputStream;
             validateSelf();
         }
 

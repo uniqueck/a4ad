@@ -19,7 +19,7 @@ class PushArtifactController {
 
     @PostMapping("/jobs/{jobName}/artifacts")
     @ResponseStatus(HttpStatus.CREATED)
-    void pushArtifact(@PathVariable("jobName") String jobName, @RequestParam("file") MultipartFile multipartFile) {
+    public void pushArtifact(@PathVariable("jobName") String jobName, @RequestParam("file") MultipartFile multipartFile) {
         try {
             pushArtifactUseCase.saveArtifact(new PushArtifactUseCase.PushArtifactUseCaseCommand(jobName, multipartFile.getOriginalFilename(), multipartFile.getBytes()));
         } catch (IOException e) {

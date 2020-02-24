@@ -1,9 +1,8 @@
-version: 2
-executorType: machine # for testcontainers necessary
+version: 2.1
 jobs:
   build:
-    docker:
-      - image: circleci/openjdk:11-jdk
+    machine:
+      image: ubuntu-1604:201903-01
     steps:
       - checkout
       - run:
@@ -23,8 +22,8 @@ jobs:
           name: Analyze on SonarCloud
           command: mvn -B clean verify sonar:sonar
   build-docs:
-    docker:
-      - image: circleci/openjdk:11-jdk
+    # docker:
+    #  - image: circleci/openjdk:11-jdk
     steps:
       - checkout
       - run:
@@ -40,7 +39,7 @@ jobs:
             paths:
               - generated-docs
 workflows:
-  version: 2
+  version: 2.1
   build-n-deploy:
     jobs:
       - build:
