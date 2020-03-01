@@ -7,7 +7,6 @@ import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.InputStream;
 
 public interface PushArtifactUseCase {
 

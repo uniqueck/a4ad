@@ -31,7 +31,7 @@ jobs:
           path: ~/test-results/junit
       - run:
           name: Analyze on SonarCloud
-          command: mvn -B clean verify sonar:sonar
+          command: mvn -B verify sonar:sonar
 
   build-docs:
     <<: *defaults
@@ -44,14 +44,9 @@ jobs:
       - run: sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/java
       - run: sudo update-alternatives --set javac /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/javac
       - checkout
-      - run:
-          name: Install Graphiz
-          command: sudo apt-get install graphviz
-      - run:
-          name: Build Arc42
-          command: mvn -Parc42
+      - run: mvn -B -Parc42
       - store_artifacts:
-          path: ~/target/generated-docs/
+          path: ~/project/target/generated-docs/
       - persist_to_workspace:
             root: target
             paths:
