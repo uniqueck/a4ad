@@ -168,6 +168,7 @@
 								<id>default</id>
 								<phase>generate-resources</phase>
 								<goals><goal>process-asciidoc</goal></goals>
+								<inherited>false</inherited>
 							</execution>
 						</executions>
 						<dependencies>

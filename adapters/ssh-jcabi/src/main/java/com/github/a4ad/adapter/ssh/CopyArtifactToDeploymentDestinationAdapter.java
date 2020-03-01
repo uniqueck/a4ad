@@ -35,7 +35,7 @@ class CopyArtifactToDeploymentDestinationAdapter implements CopyArtifactToDeploy
     }
 
     protected String getParentDirectory(String path) {
-        return path.substring(0, path.lastIndexOf("/"));
+        return path.substring(0, path.lastIndexOf('/'));
     }
 
     protected boolean existParentDirectory(Shell shell, String path) {
