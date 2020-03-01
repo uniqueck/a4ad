@@ -1,6 +1,6 @@
 package com.github.a4ad.adapter.ssh;
 
-import com.github.a4ad.port.out.CopyArtifactToDeploymentDestinationPort;
+import com.github.a4ad.port.out.ssh.CopyArtifactToDeploymentDestinationPort;
 import com.jcabi.log.Logger;
 import com.jcabi.ssh.Shell;
 import com.jcabi.ssh.Ssh;
@@ -8,11 +8,9 @@ import com.jcabi.ssh.SshByPassword;
 import com.jcraft.jsch.JSchException;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 
 @Component

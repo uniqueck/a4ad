@@ -1,9 +1,9 @@
 package com.github.a4ad.adapter.ssh;
 
-import com.github.a4ad.port.out.CopyArtifactToDeploymentDestinationPort;
-import com.github.a4ad.port.out.CopyArtifactToDeploymentDestinationPort.Authorization;
-import com.github.a4ad.port.out.CopyArtifactToDeploymentDestinationPort.CopyArtifactToDeploymentDestinationCommand;
-import com.github.a4ad.port.out.CopyArtifactToDeploymentDestinationPort.Destination;
+import com.github.a4ad.port.out.ssh.CopyArtifactToDeploymentDestinationPort;
+import com.github.a4ad.port.out.ssh.CopyArtifactToDeploymentDestinationPort.Authorization;
+import com.github.a4ad.port.out.ssh.CopyArtifactToDeploymentDestinationPort.CopyArtifactToDeploymentDestinationCommand;
+import com.github.a4ad.port.out.ssh.CopyArtifactToDeploymentDestinationPort.Destination;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package com.github.a4ad.port.out;
+package com.github.a4ad.port.out.ssh;
 
 import com.github.a4ad.common.SelfValidating;
 import lombok.EqualsAndHashCode;
