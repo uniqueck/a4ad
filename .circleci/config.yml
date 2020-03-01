@@ -1,9 +1,20 @@
 version: 2.1
+
+defaults: &defaults
+  machine:
+    image: ubuntu-1604:201903-01
+
 jobs:
   build:
-    machine:
-      image: ubuntu-1604:201903-01
+    <<: *defaults
+
     steps:
+      - run: wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+      - run: sudo apt-get install -y software-properties-common
+      - run: sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+      - run: sudo apt-get update && sudo apt-get install adoptopenjdk-11-openj9 tree graphviz maven
+      - run: sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/java
+      - run: sudo update-alternatives --set javac /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/javac
       - checkout
       - run:
           name: Build and Test
@@ -21,10 +32,17 @@ jobs:
       - run:
           name: Analyze on SonarCloud
           command: mvn -B clean verify sonar:sonar
+
   build-docs:
-    # docker:
-    #  - image: circleci/openjdk:11-jdk
+    <<: *defaults
+
     steps:
+      - run: wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+      - run: sudo apt-get install -y software-properties-common
+      - run: sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+      - run: sudo apt-get update && sudo apt-get install adoptopenjdk-11-openj9 tree graphviz maven
+      - run: sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/java
+      - run: sudo update-alternatives --set javac /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/javac
       - checkout
       - run:
           name: Install Graphiz
@@ -38,6 +56,7 @@ jobs:
             root: target
             paths:
               - generated-docs
+
 workflows:
   version: 2.1
   build-n-deploy:
