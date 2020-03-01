@@ -27,6 +27,7 @@
 		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 		<spring-boot-dependencies.version>2.1.6.RELEASE</spring-boot-dependencies.version>
+		<aggregate.report.dir>configuration/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
 	</properties>
 
 	<modules>
