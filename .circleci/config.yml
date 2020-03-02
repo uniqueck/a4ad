@@ -4,12 +4,9 @@ defaults: &defaults
   machine:
     image: ubuntu-1604:201903-01
 
-jobs:
-  build:
-    <<: *defaults
-
-    working_directory: ~/a4ad # directory where steps will run
-
+commands:
+  install_additional_packages:
+    description: "install jdk11, graphivz, tree and maven"
     steps:
       - run: wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
       - run: sudo apt-get install -y software-properties-common
@@ -18,8 +15,9 @@ jobs:
       - run: sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/java
       - run: sudo update-alternatives --set javac /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/javac
 
-      - checkout
-
+  maven_cache_management:
+    description: "restore maven cache and update cache"
+    steps:
       - restore_cache: #restore the saved cache after the first run or if 'pom.xml' has changed
           key: a4ad-{{ checksum "pom.xml" }}
 
@@ -29,6 +27,20 @@ jobs:
           paths:
             - ~/.m2
           key: a4ad-{{ checksum "pom.xml" }}
+
+
+jobs:
+  build:
+    <<: *defaults
+
+    working_directory: ~/a4ad # directory where steps will run
+
+    steps:
+      - install_additional_packages
+
+      - checkout
+
+      - maven_cache_management
 
       - run: mvn -B package
 
@@ -54,13 +66,12 @@ jobs:
     <<: *defaults
 
     steps:
-      - run: wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-      - run: sudo apt-get install -y software-properties-common
-      - run: sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-      - run: sudo apt-get update && sudo apt-get install adoptopenjdk-11-openj9 tree graphviz maven
-      - run: sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/java
-      - run: sudo update-alternatives --set javac /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/javac
+      - install_additional_packages
+
       - checkout
+
+      - maven_cache_management
+
       - run: mvn -B -Parc42
       - store_artifacts:
           path: ~/project/target/generated-docs/
