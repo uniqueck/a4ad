@@ -21,7 +21,7 @@ commands:
       - restore_cache: #restore the saved cache after the first run or if 'pom.xml' has changed
           key: a4ad-{{ checksum "pom.xml" }}
 
-      - run: mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies # gets the project dependencies
+      - run: mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies -Parc42 # gets the project dependencies
 
       - save_cache: # saves the project dependencies
           paths:
@@ -42,7 +42,7 @@ jobs:
 
       - maven_cache_management
 
-      - run: mvn -B package
+      - run: mvn -B verify
 
 
 
@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Analyze on SonarCloud
-          command: mvn -B verify sonar:sonar
+          command: mvn -B sonar:sonar
 
   build-docs:
     <<: *defaults
