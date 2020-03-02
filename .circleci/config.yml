@@ -42,9 +42,9 @@ jobs:
 
       - maven_cache_management
 
+      - run: mvn -B compile
+
       - run: mvn -B verify
-
-
 
       - run:
           name: Save test results # collect all report files
@@ -58,9 +58,7 @@ jobs:
           path: ~/test-results/junit
 
 
-      - run:
-          name: Analyze on SonarCloud
-          command: mvn -B sonar:sonar
+      - run: mvn -B sonar:sonar
 
   build-docs:
     <<: *defaults
