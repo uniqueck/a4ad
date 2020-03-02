@@ -8,6 +8,8 @@ jobs:
   build:
     <<: *defaults
 
+    working_directory: ~/a4ad # directory where steps will run
+
     steps:
       - run: wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
       - run: sudo apt-get install -y software-properties-common
@@ -15,20 +17,35 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install adoptopenjdk-11-openj9 tree graphviz maven
       - run: sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/java
       - run: sudo update-alternatives --set javac /usr/lib/jvm/adoptopenjdk-11-openj9-amd64/bin/javac
+
       - checkout
+
+      - restore_cache: #restore the saved cache after the first run or if 'pom.xml' has changed
+          key: a4ad-{{ checksum "pom.xml" }}
+
+      - run: mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies # gets the project dependencies
+
+      - save_cache: # saves the project dependencies
+          paths:
+            - ~/.m2
+          key: a4ad-{{ checksum "pom.xml" }}
+
+      - run: mvn -B package
+
+
+
       - run:
-          name: Build and Test
-          command: mvn -B package
-      - run:
-          name: Save test results
+          name: Save test results # collect all report files
           command: |
             mkdir -p ~/test-results/junit/
             find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
           when: always
-      - store_test_results:
+      - store_test_results: # uploads the test metadata form the 'target/surefire-reports' directory
           path: ~/test-results
       - store_artifacts:
           path: ~/test-results/junit
+
+
       - run:
           name: Analyze on SonarCloud
           command: mvn -B verify sonar:sonar
