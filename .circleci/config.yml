@@ -42,9 +42,9 @@ jobs:
 
       - maven_cache_management
 
-      - run: mvn -B compile
+      - run: mvn -B compile -T 2C
 
-      - run: mvn -B verify
+      - run: mvn -B verify -T 2C
 
       - run:
           name: Save test results # collect all report files
