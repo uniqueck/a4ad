@@ -4,8 +4,6 @@ import com.github.a4ad.common.SelfValidating;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.InputStream;
 
@@ -42,48 +40,6 @@ public interface CopyArtifactToDeploymentDestinationPort {
 
 
 
-    }
-
-    @Value
-    @EqualsAndHashCode(callSuper = false)
-    class Destination extends SelfValidating<Destination> {
-
-        @NotNull
-        final String host;
-        @Min(1)
-        final int port;
-
-        private Destination(String host, int port) {
-            this.host = host;
-            this.port = port;
-            validateSelf();
-        }
-
-        public static Destination of(String host, int port) {
-            return new Destination(host, port);
-        }
-
-    }
-
-    @Value
-    @EqualsAndHashCode(callSuper = false)
-    class Authorization extends SelfValidating<Authorization> {
-
-        @NotBlank
-        final String username;
-        @NotBlank
-        String password;
-
-
-        private Authorization(String username, String password) {
-            this.username = username;
-            this.password = password;
-            validateSelf();
-        }
-
-        public static Authorization byPassword(String username, String password) {
-            return new Authorization(username, password);
-        }
     }
 
     class CopyArtifactToDeploymentDestinationException extends Exception {
