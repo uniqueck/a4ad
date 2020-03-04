@@ -14,6 +14,7 @@
     <properties>
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}
         </sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.coverage.exclusions>**/*A4adApplication.java</sonar.coverage.exclusions>
     </properties>
 
 
@@ -93,11 +94,6 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.4</version>
-                <configuration>
-                    <excludes>
-                        <exclude>com/github/a4ad/A4adApplication.class</exclude>
-                    </excludes>
-                </configuration>
                 <executions>
                     <execution>
                         <id>report</id>
