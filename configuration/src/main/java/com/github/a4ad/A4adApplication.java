@@ -1,4 +1,4 @@
-package a4ad;
+package com.github.a4ad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
