@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>api-out</artifactId>
-    <name>ports/${artifactId}</name>
+    <name>ports/${project.artifactId}</name>
 
     <properties>
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
