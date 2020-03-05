@@ -15,6 +15,15 @@ import java.io.IOException;
 @RestAdapter
 class PushArtifactController {
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    static class PushArtifactRuntimeException extends RuntimeException {
+
+        PushArtifactRuntimeException(String message, Throwable cause) {
+            super(message, cause);
+        }
+
+    }
+
     final PushArtifactUseCase pushArtifactUseCase;
 
     @PostMapping("/jobs/{jobName}/artifacts")
@@ -23,7 +32,7 @@ class PushArtifactController {
         try {
             pushArtifactUseCase.saveArtifact(new PushArtifactUseCase.PushArtifactUseCaseCommand(jobName, multipartFile.getOriginalFilename(), multipartFile.getBytes()));
         } catch (IOException e) {
-            throw new RuntimeException("Fehler beim Upload des Artifacts",e);
+            throw new PushArtifactRuntimeException("Fehler beim Upload des Artifacts",e);
         }
     }
 

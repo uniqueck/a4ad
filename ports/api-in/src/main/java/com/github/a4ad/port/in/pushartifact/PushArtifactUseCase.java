@@ -24,7 +24,7 @@ public interface PushArtifactUseCase {
         public PushArtifactUseCaseCommand(String jobName, String fileName, byte[] content) {
             this.jobName = jobName;
             this.fileName = StringUtils.cleanPath(fileName);
-            this.content = content;
+            this.content = content != null ? content.clone() : null;
             validateSelf();
         }
 

@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
 abstract class AbstractSshAdapter {
 
 
-    class ShellConnectionException extends Exception {
+    static class ShellConnectionException extends Exception {
 
         public ShellConnectionException(String message) {
             super(message);
