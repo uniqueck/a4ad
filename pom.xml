@@ -26,6 +26,9 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
 		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+
+		<sonar.java.spotbugs.reportPaths>${project.build.directory}/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
+
 		<spring-boot-dependencies.version>2.1.6.RELEASE</spring-boot-dependencies.version>
 		<aggregate.report.dir>configuration/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
 	</properties>
@@ -136,6 +139,28 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>3.1.12.2</version>
+				<dependencies>
+					<!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
+					<dependency>
+						<groupId>com.github.spotbugs</groupId>
+						<artifactId>spotbugs</artifactId>
+						<version>4.0.0</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>spotbugs</id>
+						<phase>package</phase>
+						<goals><goal>spotbugs</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
