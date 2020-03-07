@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/headerHead :: head">...</div>
+
+<div th:replace="fragments/headerNavBarWithSearchBox :: navSearch">...</div>
+
+<body class="bg-white text-dark bgsecond">
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title d-inline" th:text="#{index.scheduled.deployments.title}">Anstehende Deployments</h5>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th th:text="#{index.pendingdeployments.table.col.job}">Auftrag</th>
+                        <th th:text="#{index.pendingdeployments.table.col.version}">Version</th>
+                        <th th:text="#{index.pendingdeployments.table.col.environment}">Umgebung</th>
+                        <th th:text="#{index.pendingdeployments.table.col.user}">Benutzer</th>
+                        <th th:text="#{index.pendingdeployments.table.col.timestamp}">Uhrzeit</th>
+                        <th th:text="#{index.pendingdeployments.table.col.status}">Status</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="pendingDeployment, rowStat : ${pendingDeployments}">
+
+                        <th scope="row">
+
+                            <a href="#" class="button btn-outline-danger"><i class="fa fa-power-off la-lg"></i></a>
+
+                        </th>
+
+                        <td th:text="${pendingDeployment.job}">Auftrag</td>
+                        <td th:text="${pendingDeployment.version}">Version</td>
+                        <td th:text="${pendingDeployment.environment}">Umgebung</td>
+                        <td th:text="${pendingDeployment.user}">Benutzer</td>
+                        <td th:text="${pendingDeployment.timestamp}">Uhrzeit</td>
+                        <td th:text="${pendingDeployment.status}">Status</td>
+
+                    </tr>
+
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
