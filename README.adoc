@@ -32,3 +32,5 @@ Jedes Deployment soll protokollisiert werden und über ein Rechtkonzept abgesich
 === Nützliche Links
 
 * https://github.com/callicoder/spring-boot-file-upload-download-rest-api-example[File Upload via REST API]
+* https://blog.codeleak.pl/2019/12/junit-5-and-selenium-improving-project.html[Selenium JUnit 5 Tests]
+* https://rieckpil.de/spring-boot-functional-tests-with-selenium-and-testcontainers/[TestContaners and Selenium]
