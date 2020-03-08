@@ -1,4 +1,4 @@
-package com.github.a4ad.domain;
+package com.github.a4ad.domain.manage;
 
 import org.junit.jupiter.api.Test;
 

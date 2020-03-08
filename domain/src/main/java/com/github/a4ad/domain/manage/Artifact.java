@@ -1,4 +1,4 @@
-package com.github.a4ad.domain;
+package com.github.a4ad.domain.manage;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

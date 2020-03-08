@@ -1,8 +1,7 @@
-package com.github.a4ad.domain;
+package com.github.a4ad.domain.manage;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Value;
 
 import java.util.Optional;
 
@@ -10,9 +9,9 @@ import java.util.Optional;
 public class Job {
 
 
-    private final Jobid id;
+    private final JobId id;
 
-    public static Job withId(Jobid id) {
+    public static Job withId(JobId id) {
         return new Job(id);
     }
 
@@ -20,14 +19,10 @@ public class Job {
         return new Job(null);
     }
 
-    public Optional<Jobid> getId() {
+    public Optional<JobId> getId() {
         return Optional.ofNullable(this.id);
     }
 
 
-    @Value
-    public static class Jobid {
-        private Long value;
-    }
 
 }

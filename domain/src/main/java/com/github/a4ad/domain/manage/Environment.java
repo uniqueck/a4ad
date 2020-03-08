@@ -1,4 +1,4 @@
-package com.github.a4ad.domain;
+package com.github.a4ad.domain.manage;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class Environment {
 
     @Value
     public static class EnvironmentId {
-        private Long value;
+        Long value;
     }
 
 }
