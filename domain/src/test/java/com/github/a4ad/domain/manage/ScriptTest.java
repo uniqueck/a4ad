@@ -36,4 +36,14 @@ class ScriptTest {
         assertFalse(script.sameValueAs(null));
     }
 
+    @DisplayName("equals")
+    @Test
+    void testEquals() {
+        Script script = new Script("bin/startup.sh");
+        assertEquals(script, script);
+        assertEquals(script, new Script("bin/startup.sh"));
+        assertNotEquals(script, new Script("bin/shutdown.sh"));
+        assertNotEquals(script, null);
+    }
+
 }

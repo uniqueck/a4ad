@@ -45,6 +45,7 @@
         <module>adapters/bpmn-flowable</module>
         <module>adapters/ssh-jcabi</module>
         <module>adapters/web-ui-thymeleaf</module>
+        <module>adapters/logging</module>
     </modules>
 
 

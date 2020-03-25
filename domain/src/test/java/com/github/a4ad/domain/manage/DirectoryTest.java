@@ -49,4 +49,10 @@ class DirectoryTest {
         assertEquals("/bin/".hashCode(), new Directory("/bin").hashCode());
     }
 
+    @Test
+    void sameValueAs() {
+        assertTrue(new Directory("/tmp").sameValueAs(new Directory("/tmp")));
+        assertFalse(new Directory("/tmp").sameValueAs(new Directory("/tmp2")));
+        assertFalse(new Directory("/tmp").sameValueAs(null));
+    }
 }

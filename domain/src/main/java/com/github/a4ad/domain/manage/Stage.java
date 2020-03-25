@@ -10,6 +10,7 @@ public class Stage implements ValueObject<Stage> {
 
     @Override
     public boolean sameValueAs(Stage o) {
+        if (o == null) return false;
         return this.value.equals(o.getValue());
     }
 

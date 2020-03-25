@@ -1,5 +1,7 @@
 package com.github.a4ad.adapter.persistence.environment;
 
+import com.github.a4ad.adapter.persistence.repositories.EnvironmentJpaRepository;
+import com.github.a4ad.adapter.persistence.repositories.EnvironmentJpaRepository.EnvironmentJpaEntity;
 import com.github.a4ad.common.PersistenceAdapter;
 import com.github.a4ad.port.out.LoadEnvironmentPort;
 import lombok.RequiredArgsConstructor;

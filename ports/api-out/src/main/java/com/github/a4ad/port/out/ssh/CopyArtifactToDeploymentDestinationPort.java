@@ -29,7 +29,7 @@ public interface CopyArtifactToDeploymentDestinationPort {
             return new CopyArtifactToDeploymentDestinationCommand(destination, authorization, destinationPath, inputStream);
         }
 
-        private CopyArtifactToDeploymentDestinationCommand(Destination destination, Authorization authorization, String destinationPath, InputStream inputStream) {
+        public CopyArtifactToDeploymentDestinationCommand(Destination destination, Authorization authorization, String destinationPath, InputStream inputStream) {
             this.destination = destination;
             this.authorization = authorization;
             this.destinationPath = destinationPath;
