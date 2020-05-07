@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/headerHead :: head">...</div>
+
+<div th:replace="fragments/headerNavBarWithSearchBox :: navSearch">...</div>
+
+<body class="bg-white text-dark bgsecond">
+<div class="container-fluid">
+
+    <hr>
+    <h1 th:text="#{server.overview.header.title}">Server overview</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="card-title d-inline" th:text="#{server.overview.table.title}">Server</h5>
+                    <a th:href="${'/admin/server/new'}" class="button d-inline btn-outline-success">
+                        <i class="fas fa-plus fa-lg"></i>
+                    </a>
+                    <hr />
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="table-borderless">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" th:text="#{server.overview.table.col.name}">Name</th>
+                                    <th scope="col" th:text="#{server.overview.table.col.ip}">IP</th>
+                                    <th scope="col" th:text="#{server.overview.table.col.port}">Port</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="server : ${servers}">
+                                    <td></td>
+                                    <td th:text="${server.name}"></td>
+                                    <td th:text="${server.ip}"></td>
+                                    <td th:text="${server.port}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

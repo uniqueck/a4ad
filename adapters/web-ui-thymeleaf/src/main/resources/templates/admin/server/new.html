@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/headerHead :: head">...</div>
+
+<div th:replace="fragments/headerNavBarWithSearchBox :: navSearch">...</div>
+
+<body class="bg-white text-dark bgsecond">
+<div class="container-fluid">
+
+    <hr>
+    <h1 th:text="#{server.new.header.title}">new Server</h1>
+    <hr>
+
+    <form th:href="@{/admin/server/new}" method="post" th:object="${serverWebModel}">
+
+        <div class="form-group">
+                <input class="form-control" type="text" th:placeholder="#{server.new.form.name.placeholder}"
+                       id="serverName" th:field="*{name}">
+
+            <input class="form-control" type="text" th:placeholder="#{server.new.form.ip.placeholder}"
+                   id="serverIp" th:field="*{ip}">
+
+            <input class="form-control" type="text" th:placeholder="#{server.new.form.port.placeholder}"
+                   id="serverPort" th:field="*{port}">
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-auto">
+                <button type="submit" name="action" value="cancel" class="btn btn-danger pull-right"
+                            th:text="#{server.new.form.btn.cancel}">Cancel</button>
+                <button type="submit" name="action" value="save" class="btn btn-success pull-right"
+                            th:text="#{server.new.form.btn.save}">Save</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+</body>
+</html>

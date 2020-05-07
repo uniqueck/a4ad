@@ -14,12 +14,9 @@ public interface PushArtifactUseCase {
     @EqualsAndHashCode(callSuper = false)
     class PushArtifactUseCaseCommand extends SelfValidating<PushArtifactUseCaseCommand> {
 
-        @NotBlank
-        final String jobName;
-        @NotBlank
-        final String fileName;
-        @NotNull
-        final byte[] content;
+        @NotBlank String jobName;
+        @NotBlank String fileName;
+        @NotNull byte[] content;
 
         public PushArtifactUseCaseCommand(String jobName, String fileName, byte[] content) {
             this.jobName = jobName;

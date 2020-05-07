@@ -1,0 +1,7 @@
+@startuml
+!include common.activity.iuml
+
+(*) -->[/admin/server] SALT(serverOverview)
+serverOverview -->[/admin/server/new] SALT(newServer)
+
+@enduml

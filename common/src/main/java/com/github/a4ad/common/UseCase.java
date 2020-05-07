@@ -1,17 +1,19 @@
 package com.github.a4ad.common;
 
 import org.springframework.core.annotation.AliasFor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.annotation.*;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Component
+@Service
+@Transactional
 public @interface UseCase {
 
-    @AliasFor(annotation = Component.class)
+    @AliasFor(annotation = Service.class)
     String value() default  "";
 
 }

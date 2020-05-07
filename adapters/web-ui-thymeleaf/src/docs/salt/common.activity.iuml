@@ -1,0 +1,11 @@
+@startuml
+
+!unquoted procedure SALT($x)
+"{{
+salt
+!include $x.salt.iuml
+}}
+" as $x
+!endprocedure
+
+@enduml

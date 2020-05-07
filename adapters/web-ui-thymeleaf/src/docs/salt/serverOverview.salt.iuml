@@ -1,0 +1,19 @@
+@startsalt
+{
+    {* A4AD }
+    --
+    {
+    <b> Server overview </b>
+    }
+    --
+    {
+        {^"<b>Servers"
+            {#
+                <b> Name </b> | <b> IP </b> | <b> Port </b> | <b> State </b>
+                Server 1 | 192.x.x.x | 22 | <&circle-check>
+                Server 2 | 10.x.x.x  | 22 | <&circle-x>
+            }
+        }
+    }
+}
+@endsalt

@@ -1,0 +1,14 @@
+@startsalt
+{
+    {* A4AD }
+    --
+    <b> New Server </b>
+    --
+        {
+            Server: | " "
+                IP: | " "
+              Port: | " "
+              [Cancel<&circle-x>] | [Save<&circle-check>]
+        }
+}
+@endsalt

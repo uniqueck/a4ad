@@ -1,10 +1,14 @@
 package com.github.a4ad.adapters.web.ui.controller;
 
+import com.github.a4ad.port.in.server.AddServerUseCase;
+import com.github.a4ad.port.in.server.LoadServerQuery;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.MockBeans;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -16,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Testcontainers
 @ExtendWith({ScreenshotOnFailureExtension.class})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@MockBeans({@MockBean(AddServerUseCase.class), @MockBean(LoadServerQuery.class)})
 class IndexControllerLiveTest {
 
     @LocalServerPort
