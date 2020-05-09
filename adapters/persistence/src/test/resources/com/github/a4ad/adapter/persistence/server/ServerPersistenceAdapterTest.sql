@@ -1,0 +1,1 @@
+insert into SERVER (id,name, ip, port) values (1,'server', 'ip', 22);

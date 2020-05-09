@@ -19,7 +19,7 @@ class JobIdTest {
     }
 
     @Test void testHashCode() {
-        assertEquals(new Long(12L).hashCode(), new JobId(12L).hashCode());
+        assertEquals(Long.valueOf(12L).hashCode(), new JobId(12L).hashCode());
     }
 
 }

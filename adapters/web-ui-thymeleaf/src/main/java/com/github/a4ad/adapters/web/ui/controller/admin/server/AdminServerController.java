@@ -26,9 +26,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/admin/server")
 public class AdminServerController {
 
-    final AddServerUseCase addServerUseCase;
     final LoadServerQuery loadServerQuery;
-    final DeleteServerUseCase deleteServerUseCase;
 
     @GetMapping
     public String overview(Model model) {
@@ -41,20 +39,6 @@ public class AdminServerController {
         return new ServerWebModel(toMap.getName(), toMap.getIp(), toMap.getPort());
     }
 
-    @GetMapping("/new")
-    public String prepareNewServer(Model model) {
-        model.addAttribute("serverWebModel", ServerWebModel.withDefaultPort());
-        return "admin/server/new";
-    }
 
-    @PostMapping("/new")
-    public String saveNewServer(Model model, ServerWebModel serverWebModel) {
-        if (addServerUseCase.addServer(new AddServerUseCase.AddServerUseCaseCommand(serverWebModel.name, serverWebModel.ip, serverWebModel.port))) {
-            return "redirect:/admin/server";
-        } else {
-            model.addAttribute("serverWebModel", serverWebModel);
-            return "admin/server/new";
-        }
-    }
 
 }

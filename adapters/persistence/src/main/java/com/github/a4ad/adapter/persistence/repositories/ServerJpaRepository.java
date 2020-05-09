@@ -23,7 +23,7 @@ public interface ServerJpaRepository extends JpaRepository<ServerJpaRepository.S
         @GeneratedValue
         private Long id;
 
-        @Column(name = "NAME")
+        @Column(name = "NAME", nullable = false, unique = true)
         private String name;
 
         @Column(name = "IP")
