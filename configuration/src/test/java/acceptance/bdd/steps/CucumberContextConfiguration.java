@@ -2,6 +2,7 @@ package acceptance.bdd.steps;
 
 import acceptance.bdd.spring.CucumberContext;
 import acceptance.bdd.spring.CucumberProperties;
+import com.github.a4ad.A4adApplication;
 import io.cucumber.java.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
@@ -13,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes={A4adApplication.class},webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(classes = {CucumberProperties.class, CucumberContext.class})
 @EnableAutoConfiguration
 @Ignore

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ServerPage extends PageObject {
 
     public void checkPageTitle(String title) {
-        WebElement webElement = webdriver.findElement(By.xpath("//div[class=\"container-fluid\"]/h1"));
+        WebElement webElement = webdriver.findElement(By.xpath("//div[@class=\"container-fluid\"]/h1"));
         Assert.assertEquals(title, webElement.getText());
     }
 
