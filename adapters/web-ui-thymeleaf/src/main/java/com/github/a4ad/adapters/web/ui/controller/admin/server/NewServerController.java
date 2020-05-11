@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/admin/server/new")
-class NewServerController {
+public class NewServerController {
 
     final AddServerUseCase addServerUseCase;
 
