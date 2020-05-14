@@ -13,7 +13,7 @@ public class PageObject {
     protected int port;
 
     protected void navigateTo(String path) {
-        webdriver.get("http://localhost:" + port + path);
+        webdriver.get("http://172.17.0.1:" + port + path);
     }
 
 
